@@ -1,11 +1,14 @@
 import Carousel from '../components/Carousel'
-import TabCategories from '../components/TabCategories'
+import HowWork from '../components/HowWork'
+import WorkItea from '../components/WorkItea'
 
 const Home = () => {
   return (
     <div>
       <Carousel />
-      <TabCategories />
+      {/* <TabCategories /> */}
+      <WorkItea></WorkItea>
+      <HowWork></HowWork>
     </div>
   )
 }

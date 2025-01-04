@@ -30,7 +30,7 @@ const JobDetails = () => {
     title,
     deadline,
     category,
-    min_price,
+    price,
     max_price,
     description,
     _id,
@@ -41,7 +41,6 @@ const JobDetails = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     const form = e.target
-    const price = form.price.value
     const email = user?.email
     const comment = form.comment.value
     const jobId = _id
@@ -129,7 +128,7 @@ const JobDetails = () => {
             </div>
           </div>
           <p className='mt-6 text-lg font-bold text-gray-600 '>
-            Range: ${min_price} - ${max_price}
+            Range: ${price}
           </p>
         </div>
       </div>
@@ -149,7 +148,8 @@ const JobDetails = () => {
                 id='price'
                 type='text'
                 name='price'
-                required
+                defaultValue={price}
+                disabled
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>

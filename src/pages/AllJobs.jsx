@@ -39,9 +39,22 @@ const AllJobs = () => {
               value={filter}
             >
               <option value=''>Filter By Category</option>
-              <option value='Web Development'>Web Development</option>
-              <option value='Graphics Design'>Graphics Design</option>
-              <option value='Digital Marketing'>Digital Marketing</option>
+              <option value='Survey'>Survey</option>
+                <option value='Translation'>Translation</option>
+                <option value='Image Transcription'>Image Transcription</option>
+                <option value='Video Transcription'>Video Transcription</option>
+                <option value='Categorization'>Categorization</option>
+                <option value='Data Annotation'>Data Annotation</option>
+                <option value='Content Moderation - AI'>Content Moderation - AI</option>
+                <option value='Image Tagging'>Image Tagging</option>
+                <option value='Sentiment Analysis'>Sentiment Analysis</option>
+                <option value='Testing'>Testing</option>
+                <option value='Image Quality Rating'>Image Quality Rating</option>
+                <option value='Search Relevance'>Search Relevance</option>
+                <option value='Audio Transcription'>Audio Transcription</option>
+                <option value='Research Study'>Research Study</option>
+                <option value='Data Mining'>Data Mining</option>
+                <option value='Content Moderation'>Content Moderation</option>
             </select>
           </div>
 

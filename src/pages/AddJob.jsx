@@ -32,8 +32,8 @@ const AddJob = () => {
     const email = form.email.value
     const deadline = startDate
     const category = form.category.value
-    const min_price = parseFloat(form.min_price.value)
-    const max_price = parseFloat(form.max_price.value)
+    const price = parseFloat(form.price.value)
+    const quantity = parseFloat(form.quantity.value)
     const description = form.description.value
 
     const formData = {
@@ -45,8 +45,8 @@ const AddJob = () => {
       },
       deadline,
       category,
-      min_price,
-      max_price,
+      price,
+      quantity,
       description,
       bid_count: 0,
     }
@@ -118,30 +118,43 @@ const AddJob = () => {
                 id='category'
                 className='border p-2 rounded-md'
               >
-                <option value='Web Development'>Web Development</option>
-                <option value='Graphics Design'>Graphics Design</option>
-                <option value='Digital Marketing'>Digital Marketing</option>
+                <option value='Survey'>Survey</option>
+                <option value='Translation'>Translation</option>
+                <option value='Image Transcription'>Image Transcription</option>
+                <option value='Video Transcription'>Video Transcription</option>
+                <option value='Categorization'>Categorization</option>
+                <option value='Data Annotation'>Data Annotation</option>
+                <option value='Content Moderation - AI'>Content Moderation - AI</option>
+                <option value='Image Tagging'>Image Tagging</option>
+                <option value='Sentiment Analysis'>Sentiment Analysis</option>
+                <option value='Testing'>Testing</option>
+                <option value='Image Quality Rating'>Image Quality Rating</option>
+                <option value='Search Relevance'>Search Relevance</option>
+                <option value='Audio Transcription'>Audio Transcription</option>
+                <option value='Research Study'>Research Study</option>
+                <option value='Data Mining'>Data Mining</option>
+                <option value='Content Moderation'>Content Moderation</option>
               </select>
             </div>
             <div>
-              <label className='text-gray-700 ' htmlFor='min_price'>
-                Minimum Price
+              <label className='text-gray-700 ' htmlFor='price'>
+                Price
               </label>
               <input
-                id='min_price'
-                name='min_price'
+                id='price'
+                name='price'
                 type='number'
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
 
             <div>
-              <label className='text-gray-700 ' htmlFor='max_price'>
-                Maximum Price
+              <label className='text-gray-700 ' htmlFor='quantity'>
+                Quantity
               </label>
               <input
-                id='max_price'
-                name='max_price'
+                id='quantity'
+                name='quantity'
                 type='number'
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
