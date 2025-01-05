@@ -4,9 +4,11 @@ import logo from '../../assets/images/logo.png'
 import { useContext } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
+import useAxiosPublic from '../../hooks/useAxiosPublic'
 
 const Registration = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const { signInWithGoogle, createUser, updateUserProfile, setUser } =
     useContext(AuthContext)
 
@@ -24,8 +26,16 @@ const Registration = () => {
       console.log(result)
       await updateUserProfile(name, photo)
       setUser({ ...result.user, photoURL: photo, displayName: name })
-      toast.success('Signup Successful')
-      navigate('/')
+      const userInfo = {
+        name, email
+      }
+      axiosPublic.post('/users', userInfo)
+        .then(res => {
+          if (res.data.insertedId) {
+            toast.success('Signup Successful')
+            navigate('/')
+          }
+        })
     } catch (err) {
       console.log(err)
       toast.error(err?.message)

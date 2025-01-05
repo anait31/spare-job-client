@@ -12,6 +12,7 @@ import PrivateRoute from './PrivateRoute'
 import MyBids from '../pages/MyBids'
 import BidRequests from '../pages/BidRequests'
 import AllJobs from '../pages/AllJobs'
+import Dashboard from '../pages/Dashboard'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -82,6 +83,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: '/dashboard',
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        )
+      }
     ],
   },
 ])
