@@ -5,12 +5,12 @@ import { initializeApp } from 'firebase/app'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyABorC3Sub780By1EfD0m_4egiq1TSy8aw",
-  authDomain: "micro-jobs-auth.firebaseapp.com",
-  projectId: "micro-jobs-auth",
-  storageBucket: "micro-jobs-auth.firebasestorage.app",
-  messagingSenderId: "201218394718",
-  appId: "1:201218394718:web:1d26a164ff1a1c898ec2cf"
+  apiKey: "AIzaSyDrStbpSdg6E3RGxf3al4v_qhW1SX3TQOo",
+  authDomain: "micro-jobs-37b8c.firebaseapp.com",
+  projectId: "micro-jobs-37b8c",
+  storageBucket: "micro-jobs-37b8c.firebasestorage.app",
+  messagingSenderId: "475508960711",
+  appId: "1:475508960711:web:ab5df4139397880d6b3de2"
 };
 
 // Initialize Firebase
