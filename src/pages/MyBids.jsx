@@ -22,7 +22,7 @@ const MyBids = () => {
       const { data } = await axiosSecure.patch(`/bid-status-update/${id}`, {
         status,
       })
-      console.log(data)
+      console.log(data, 'Updated')
 
       // refresh ui
       fetchAllBids()
