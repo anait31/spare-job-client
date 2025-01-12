@@ -1,17 +1,16 @@
 import axios from 'axios'
-import { compareAsc, format } from 'date-fns'
+// import { compareAsc, format } from 'date-fns'
 import { useContext, useEffect, useState } from 'react'
 
-import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../providers/AuthProvider'
 import { toast } from 'react-hot-toast'
+import { imageUpload } from '../utilities/utils'
 
 const JobDetails = () => {
   const navigate = useNavigate()
   const { user } = useContext(AuthContext)
-  const [startDate, setStartDate] = useState(new Date())
   const { id } = useParams()
   const [job, setJob] = useState({})
   useEffect(() => {
@@ -28,7 +27,6 @@ const JobDetails = () => {
   }
   const {
     title,
-    deadline,
     category,
     price,
     max_price,
@@ -44,28 +42,19 @@ const JobDetails = () => {
     const email = user?.email
     const comment = form.comment.value
     const jobId = _id
-
+    const image = form.image.files[0]
+    const photo = await imageUpload(image)
     // 0. Check bid permissions validation
     if (user?.email === buyer?.email)
       return toast.error('Action not permitted!')
-
-    // 1. Deadline crossed validation
-    if (compareAsc(new Date(), new Date(deadline)) === 1)
-      return toast.error('Deadline Crossed, Bidding Forbidden!')
-
-    // 2. Price within maximum price range validation
     if (price > max_price)
       return toast.error('Offer less or at least equal to maximum price!')
-
-    // 3. offered deadline is within sellers deadline validation
-    if (compareAsc(new Date(startDate), new Date(deadline)) === 1)
-      return toast.error('Offer a date within deadline')
 
     const bidData = {
       price,
       email,
       comment,
-      deadline: startDate,
+      photo,
       jobId,
       title,
       category,
@@ -95,11 +84,7 @@ const JobDetails = () => {
       {/* Job Details */}
       <div className='flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]'>
         <div className='flex items-center justify-between'>
-          {deadline && (
-            <span className='text-sm font-light text-gray-800 '>
-              Deadline: {format(new Date(deadline), 'P')}
-            </span>
-          )}
+          
           <span className='px-4 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full '>
             {category}
           </span>
@@ -167,28 +152,32 @@ const JobDetails = () => {
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
-
-            <div>
-              <label className='text-gray-700 ' htmlFor='comment'>
-                Comment
-              </label>
-              <input
-                id='comment'
-                name='comment'
-                type='text'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-              />
-            </div>
             <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700'>Deadline</label>
+              <label className='text-gray-700'>Image Upload</label>
 
-              {/* Date Picker Input Field */}
-              <DatePicker
-                className='border p-2 rounded-md'
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-              />
+              {/* Image Upload Field */}
+              <label>
+                <input type="file" className='text-sm cursor-pointer w-36 hidden'
+                  name='image'
+                  id='image'
+                  accept='image/*'
+                  hidden />
+                <div className='border border-gray-300 rounded-md cursor-pointer p-1  px-4 py-2'>
+                  Image
+                </div>
+              </label>
             </div>
+          </div>
+          <div>
+            <label className='text-gray-700 ' htmlFor='comment'>
+              Comment
+            </label>
+            <input
+              id='comment'
+              name='comment'
+              type='text'
+              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+            />
           </div>
 
           <div className='flex justify-end mt-6'>

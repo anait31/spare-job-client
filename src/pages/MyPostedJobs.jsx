@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../providers/AuthProvider'
-import { format } from 'date-fns'
 import toast from 'react-hot-toast'
 import useAxiosSecure from '../hooks/useAxiosSecure'
 const MyPostedJobs = () => {
@@ -89,15 +88,8 @@ const MyPostedJobs = () => {
                       scope='col'
                       className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
-                      <span>Deadline</span>
-                    </th>
-
-                    <th
-                      scope='col'
-                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
-                    >
                       <button className='flex items-center gap-x-2'>
-                        <span>Price Range</span>
+                        <span>Price</span>
                       </button>
                     </th>
 
@@ -128,11 +120,7 @@ const MyPostedJobs = () => {
                       </td>
 
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {format(new Date(job.deadline), 'P')}
-                      </td>
-
-                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        ${job.min_price}-${job.max_price}
+                        ${job.price}
                       </td>
                       <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-2'>

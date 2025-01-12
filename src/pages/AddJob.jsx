@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import DatePicker from 'react-datepicker'
+
 import 'react-datepicker/dist/react-datepicker.css'
 
 import { toast } from 'react-hot-toast'
@@ -7,12 +6,12 @@ import { useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import useAxiosSecure from '../hooks/useAxiosSecure'
+import { imageUpload } from '../utilities/utils'
 const AddJob = () => {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
   const axiosSecure = useAxiosSecure()
   const { user } = useAuth()
-  const [startDate, setStartDate] = useState(new Date())
   const { isPending, mutateAsync } = useMutation({
     mutationFn: async jobData => {
       await axiosSecure.post(`/add-job`, jobData)
@@ -30,11 +29,13 @@ const AddJob = () => {
     const form = e.target
     const title = form.job_title.value
     const email = form.email.value
-    const deadline = startDate
+    const image = form.image.files[0]
     const category = form.category.value
     const price = parseFloat(form.price.value)
     const quantity = parseFloat(form.quantity.value)
     const description = form.description.value
+
+    const photo = await imageUpload(image)
 
     const formData = {
       title,
@@ -43,7 +44,7 @@ const AddJob = () => {
         name: user?.displayName,
         photo: user?.photoURL,
       },
-      deadline,
+      photo,
       category,
       price,
       quantity,
@@ -99,14 +100,19 @@ const AddJob = () => {
               />
             </div>
             <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700'>Deadline</label>
+              <label className='text-gray-700'>Image Upload</label>
 
-              {/* Date Picker Input Field */}
-              <DatePicker
-                className='border p-2 rounded-md'
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-              />
+              {/* Image Upload Field */}
+              <label>
+                <input type="file" className='text-sm cursor-pointer w-36 hidden'
+                  name='image'
+                  id='image'
+                  accept='image/*'
+                  hidden />
+                <div className='border border-gray-300 rounded-md cursor-pointer p-1  px-4 py-2'>
+                  Image
+                </div>
+              </label>
             </div>
 
             <div className='flex flex-col gap-2 '>

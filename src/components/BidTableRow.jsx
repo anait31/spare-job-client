@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { format } from 'date-fns'
+// import { format } from 'date-fns'
 
 const BidTableRow = ({ bid, handleStatusChange }) => {
-  const { title, deadline, category, status, price, _id } = bid || {}
+  const { title, category, status, price, _id } = bid || {}
 
   return (
     <tr>
@@ -10,9 +10,9 @@ const BidTableRow = ({ bid, handleStatusChange }) => {
         {title}
       </td>
 
-      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+      {/* <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
         {format(new Date(deadline), 'P')}
-      </td>
+      </td> */}
 
       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
         ${price}

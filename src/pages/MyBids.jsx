@@ -61,13 +61,6 @@ const MyBids = () => {
                       scope='col'
                       className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
-                      <span>Deadline</span>
-                    </th>
-
-                    <th
-                      scope='col'
-                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
-                    >
                       <button className='flex items-center gap-x-2'>
                         <span>Price</span>
                       </button>
