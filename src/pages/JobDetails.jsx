@@ -84,7 +84,7 @@ const JobDetails = () => {
       {/* Job Details */}
       <div className='flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]'>
         <div className='flex items-center justify-between'>
-          
+
           <span className='px-4 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full '>
             {category}
           </span>
@@ -113,21 +113,21 @@ const JobDetails = () => {
             </div>
           </div>
           <p className='mt-6 text-lg font-bold text-gray-600 '>
-            Range: ${price}
+            Amount: ${price}
           </p>
         </div>
       </div>
       {/* Place A Bid Form */}
       <section className='p-6 w-full  bg-white rounded-md shadow-md flex-1 md:min-h-[350px]'>
         <h2 className='text-lg font-semibold text-gray-700 capitalize '>
-          Place A Bid
+          Job Request
         </h2>
 
         <form onSubmit={handleSubmit}>
           <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
             <div>
               <label className='text-gray-700 ' htmlFor='price'>
-                Price
+                Amount
               </label>
               <input
                 id='price'
@@ -152,7 +152,7 @@ const JobDetails = () => {
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
-            <div className='flex flex-col gap-2 '>
+            <div className='flex flex-col gap-2'>
               <label className='text-gray-700'>Image Upload</label>
 
               {/* Image Upload Field */}
@@ -168,24 +168,22 @@ const JobDetails = () => {
               </label>
             </div>
           </div>
-          <div>
-            <label className='text-gray-700 ' htmlFor='comment'>
-              Comment
+          <div className='mt-4'>
+            <label className='text-gray-700 ' htmlFor='description'>
+              Description
             </label>
-            <input
-              id='comment'
-              name='comment'
-              type='text'
-              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-            />
+            <textarea
+              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              name='description'
+              id='description'
+            ></textarea>
           </div>
-
           <div className='flex justify-end mt-6'>
             <button
               type='submit'
               className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
             >
-              Place Bid
+              Request
             </button>
           </div>
         </form>

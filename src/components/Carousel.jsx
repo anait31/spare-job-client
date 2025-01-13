@@ -16,7 +16,7 @@ import bgimg3 from '../assets/images/carousel3.webp'
 
 export default function Carousel() {
   return (
-    <div className=''>
+    <div>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

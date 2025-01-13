@@ -30,10 +30,10 @@ const JobCard = ({ job }) => {
           {description.substring(0, 70)}...
         </p>
         <p className='mt-2 text-sm font-bold text-gray-600 '>
-          Range: ${price}
+          Amount: ${price}
         </p>
         <p className='mt-2 text-sm font-bold text-gray-600 '>
-          Total Bids: {bid_count} / {quantity}
+          Total Jobs: {bid_count} / {quantity}
         </p>
       </div>
 
