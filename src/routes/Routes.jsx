@@ -13,6 +13,7 @@ import MyBids from '../pages/MyBids'
 import BidRequests from '../pages/BidRequests'
 import AllJobs from '../pages/AllJobs'
 import Dashboard from '../pages/Dashboard'
+import Blogs from '../pages/Blogs/Blogs'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <AllJobs />
         </PrivateRoute>
+      },
+      {
+        path: '/blogs',
+        element: <Blogs></Blogs>
       },
       {
         path: '/login',
