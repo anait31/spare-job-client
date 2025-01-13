@@ -10,9 +10,9 @@ import 'swiper/css/navigation'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import Slide from './Slide'
 
-import bgimg1 from '../assets/images/carousel1.jpg'
-import bgimg2 from '../assets/images/carousel2.jpg'
-import bgimg3 from '../assets/images/carousel3.jpg'
+import bgimg1 from '../assets/images/carousel1.webp'
+import bgimg2 from '../assets/images/carousel2.jpeg'
+import bgimg3 from '../assets/images/carousel3.webp'
 
 export default function Carousel() {
   return (
@@ -35,19 +35,22 @@ export default function Carousel() {
         <SwiperSlide>
           <Slide
             image={bgimg1}
-            text='Get Your Web Development Projects Done in minutes'
+            text='Crowdsource your Micro Jobs'
+            description='VCode generation Auto Submission to MW'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg2}
-            text='Get Your Graphics Design Projects Done in minutes'
+            text='Get Started Right Away with Easy-to-Customize Templates'
+            description='Predefined Answers Required/Not-required questions'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg3}
-            text='Start Your Digital Marketing Campaigns up n running'
+            text='Multiple, Continuous Jobs'
+            description='DoTask again'
           />
         </SwiperSlide>
       </Swiper>
