@@ -29,6 +29,7 @@ const AllUsers = () => {
 
     return (
         <div className="container mx-auto">
+            <h2 className="text-2xl text-center my-6 uppercase font-bold">All Users</h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -47,7 +48,7 @@ const AllUsers = () => {
                             <th>{idx + 1}</th>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
-                            <td>{user?.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)}>User</button>}</td>
+                            <td className="">{user?.role === 'admin' ? 'Admin' : <button className="" onClick={() => handleMakeAdmin(user)}>User</button>}</td>
                             <td><button onClick={() => handleUserDelete(user)}>Delete</button></td>
                         </tr>)}
                     </tbody>

@@ -88,14 +88,14 @@ const Navbar = () => {
                       <Link to="/my-posted-jobs">My Posted Jobs</Link>
                     </li>
                     <li>
-                      <Link to="/bid-requests">Bid Requests</Link>
+                      <Link to="/bid-requests">Job Requests</Link>
                     </li>
                   </>
                 ) : (
                   <>
                     <li>
                       <p>Total Price: {totalPrice !== null ? `$${totalPrice}` : 'Loading...'}</p>
-                      <Link to="/my-bids">My Bids</Link>
+                      <Link to="/my-bids">My Job Request</Link>
                     </li>
                   </>
                 )}

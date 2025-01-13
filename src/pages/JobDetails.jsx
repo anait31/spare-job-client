@@ -40,7 +40,7 @@ const JobDetails = () => {
     e.preventDefault()
     const form = e.target
     const email = user?.email
-    const comment = form.comment.value
+    const comment = form.description.value
     const jobId = _id
     const image = form.image.files[0]
     const photo = await imageUpload(image)
@@ -71,8 +71,8 @@ const JobDetails = () => {
       // 2. Reset form
       form.reset()
       // 3. Show toast and navigate
-      toast.success('Bid Successful!!!')
-      console.log(data)
+      toast.success('Request Successfully!!!')
+      // console.log(data)
       navigate('/my-bids')
     } catch (err) {
       console.log(err)

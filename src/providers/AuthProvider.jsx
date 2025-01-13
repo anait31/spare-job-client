@@ -19,6 +19,7 @@ const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [balance, setBalance] = useState(20)
   console.log(user)
   const [loading, setLoading] = useState(true)
 
@@ -63,6 +64,7 @@ const AuthProvider = ({ children }) => {
           { withCredentials: true }
         )
         // console.log(data)
+        setBalance(Math.random() * 10)
       } else {
         setUser(currentUser)
         const { data } = await axios.get(
@@ -87,6 +89,7 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     logOut,
     updateUserProfile,
+    balance
   }
 
   return (
