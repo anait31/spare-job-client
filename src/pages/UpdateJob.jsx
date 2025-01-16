@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
-import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../providers/AuthProvider'
@@ -10,7 +9,6 @@ const UpdateJob = () => {
   const navigate = useNavigate()
   const { user } = useContext(AuthContext)
   const { id } = useParams()
-  const [startDate, setStartDate] = useState(new Date())
   const [job, setJob] = useState({})
   useEffect(() => {
     fetchJobData()
@@ -22,7 +20,6 @@ const UpdateJob = () => {
       `${import.meta.env.VITE_API_URL}/job/${id}`
     )
     setJob(data)
-    setStartDate(new Date(data.deadline))
   }
 
   const handleSubmit = async e => {
@@ -30,10 +27,9 @@ const UpdateJob = () => {
     const form = e.target
     const title = form.job_title.value
     const email = form.email.value
-    const deadline = startDate
     const category = form.category.value
-    const min_price = parseFloat(form.min_price.value)
-    const max_price = parseFloat(form.max_price.value)
+    const price = form.price.value
+    const quantity = form.quantity.value
     const description = form.description.value
 
     const formData = {
@@ -43,10 +39,9 @@ const UpdateJob = () => {
         name: user?.displayName,
         photo: user?.photoURL,
       },
-      deadline,
       category,
-      min_price,
-      max_price,
+      price,
+      quantity,
       description,
       bid_count: job.bid_count,
     }
@@ -102,15 +97,20 @@ const UpdateJob = () => {
               />
             </div>
             <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700'>Deadline</label>
+              <label className='text-gray-700'>Image Upload</label>
 
-              <DatePicker
-                className='border p-2 rounded-md'
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-              />
+              {/* Image Upload Field */}
+              <label>
+                <input type="file" className='text-sm cursor-pointer w-36 hidden'
+                  name='image'
+                  id='image'
+                  accept='image/*'
+                  hidden />
+                <div className='border border-gray-300 rounded-md cursor-pointer p-1  px-4 py-2'>
+                  Image
+                </div>
+              </label>
             </div>
-
             {job.category && (
               <div className='flex flex-col gap-2 '>
                 <label className='text-gray-700 ' htmlFor='category'>
@@ -122,33 +122,46 @@ const UpdateJob = () => {
                   defaultValue={job.category}
                   className='border p-2 rounded-md'
                 >
-                  <option value='Web Development'>Web Development</option>
-                  <option value='Graphics Design'>Graphics Design</option>
-                  <option value='Digital Marketing'>Digital Marketing</option>
+                  <option value='Survey'>Survey</option>
+                  <option value='Translation'>Translation</option>
+                  <option value='Image Transcription'>Image Transcription</option>
+                  <option value='Video Transcription'>Video Transcription</option>
+                  <option value='Categorization'>Categorization</option>
+                  <option value='Data Annotation'>Data Annotation</option>
+                  <option value='Content Moderation - AI'>Content Moderation - AI</option>
+                  <option value='Image Tagging'>Image Tagging</option>
+                  <option value='Sentiment Analysis'>Sentiment Analysis</option>
+                  <option value='Testing'>Testing</option>
+                  <option value='Image Quality Rating'>Image Quality Rating</option>
+                  <option value='Search Relevance'>Search Relevance</option>
+                  <option value='Audio Transcription'>Audio Transcription</option>
+                  <option value='Research Study'>Research Study</option>
+                  <option value='Data Mining'>Data Mining</option>
+                  <option value='Content Moderation'>Content Moderation</option>
                 </select>
               </div>
             )}
+
             <div>
-              <label className='text-gray-700 ' htmlFor='min_price'>
-                Minimum Price
+              <label className='text-gray-700 ' htmlFor='max_price'>
+                Price
               </label>
               <input
-                id='min_price'
-                name='min_price'
-                defaultValue={job.min_price}
+                id='price'
+                name='price'
+                defaultValue={job.price}
                 type='number'
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
-
             <div>
               <label className='text-gray-700 ' htmlFor='max_price'>
-                Maximum Price
+                Quantity
               </label>
               <input
-                id='max_price'
-                name='max_price'
-                defaultValue={job.max_price}
+                id='price'
+                name='quantity'
+                defaultValue={job.quantity}
                 type='number'
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />

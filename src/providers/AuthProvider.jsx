@@ -19,8 +19,7 @@ const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
-  const [balance, setBalance] = useState(20)
-  console.log(user)
+  // console.log(user)
   const [loading, setLoading] = useState(true)
 
   const createUser = (email, password) => {
@@ -56,6 +55,7 @@ const AuthProvider = ({ children }) => {
       // console.log('CurrentUser-->', currentUser)
       if (currentUser?.email) {
         setUser(currentUser)
+        
         const { data } = await axios.post(
           `${import.meta.env.VITE_API_URL}/jwt`,
           {
@@ -63,9 +63,10 @@ const AuthProvider = ({ children }) => {
           },
           { withCredentials: true }
         )
-        // console.log(data)
-        setBalance(Math.random() * 10)
-      } else {
+        console.log(data, 'Login true')
+        setLoading(false)
+      } 
+      else {
         setUser(currentUser)
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/logout`,
@@ -88,8 +89,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     signInWithGoogle,
     logOut,
-    updateUserProfile,
-    balance
+    updateUserProfile
   }
 
   return (

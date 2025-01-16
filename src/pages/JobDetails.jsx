@@ -72,7 +72,7 @@ const JobDetails = () => {
       form.reset()
       // 3. Show toast and navigate
       toast.success('Request Successfully!!!')
-      // console.log(data)
+      console.log(data)
       navigate('/my-bids')
     } catch (err) {
       console.log(err)
